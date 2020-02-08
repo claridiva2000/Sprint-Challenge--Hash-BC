@@ -1,0 +1,21 @@
+## Interview Questions
+
+Explain in detail the workings of a dynamic array:
+a dynamic array tracks the number of items relative to the available space. once a certain number of items are exceeded, a new array of double the length is created and the data of the initial array is copied into the new array in the same order.
+
+* What is the runtime complexity to access an array, add or remove from the front, and add or remove from the back?
+access: O(1)
+add/remove from front/end: O(1)
+
+* What is the worse case scenario if you try to extend the storage size of a dynamic array?
+O(n)
+
+Explain how a blockchain is structured. What are the blocks, what is the chain? How is the data organized?
+ Block: A list of transactions recorded into a ledger over a given period. The size, period, and triggering event for blocks is different for every blockchain.
+ Chain: A hash that links one block to another, mathematically “chaining” them together. The hash in blockchain is created from the data that was in the previous block. The hash is a fingerprint of this data and locks blocks in order and time.
+ organized: similar to a linked list. each block is like a node that points to the next block/node
+
+Explain how proof of work functions. How does it operate. How does this protect the chain from attack. What kind of attack is possible?
+
+Proof of work is a way to purposefully slow down the process of mining to prevent hacking/cheating. The amount of power it takes to attack the network is so high that it makes it nearly impossible to cheat. 
+proof of work takes the data from the current block, hash from the previous block, puts it through a hash function which is very difficult to solve (pretty much just have to make millions of guesses). under the right conditions the hash can be solved in order to earn bitcoins. 
