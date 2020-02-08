@@ -7,7 +7,7 @@ from uuid import uuid4
 
 from timeit import default_timer as timer
 
-import random
+from random import randint
 
 
 def proof_of_work(last_proof):
@@ -23,7 +23,10 @@ def proof_of_work(last_proof):
     start = timer()
 
     print("Searching for next proof")
-    proof = 0
+    last_hash = hashlib.sha256(f'{last_proof}'.encode()).hexdigest()
+    proof = last_proof*randint(0,100)
+    while valid_proof(last_hash, proof) is False:
+        proof+=1
     #  TODO: Your code here
 
     print("Proof found: " + str(proof) + " in " + str(timer() - start))
@@ -40,7 +43,12 @@ def valid_proof(last_hash, proof):
     """
 
     # TODO: Your code here!
-    pass
+    firstsix_hash = hashlib.sha256(f'{proof}'.encode()).hexdigest()
+    if firstsix_hash[:6] == last_hash[-6:]:
+        print('Guess Hash is:', firstsix_hash[:6], 'and the Last Hash is:', last_hash[-6:])
+        return True
+    else:
+        return False
 
 
 if __name__ == '__main__':
@@ -53,7 +61,7 @@ if __name__ == '__main__':
     coins_mined = 0
 
     # Load or create ID
-    f = open("my_id.txt", "r")
+    f = open("blockchain\my_id.txt", "r")
     id = f.read()
     print("ID is", id)
     f.close()
