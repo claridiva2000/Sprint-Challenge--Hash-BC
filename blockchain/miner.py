@@ -43,9 +43,9 @@ def valid_proof(last_hash, proof):
     """
 
     # TODO: Your code here!
-    lastsix_hash = hashlib.sha256(f'{proof}'.encode()).hexdigest()
-    if lastsix_hash[:6] == last_hash[-6:]:
-        print('Guess Hash is:', lastsix_hash[:6], 'and the Last Hash is:', last_hash[-6:])
+    firstsix_hash = hashlib.sha256(f'{proof}'.encode()).hexdigest()
+    if firstsix_hash[:6] == last_hash[-6:]:
+        print('Guess Hash is:', firstsix_hash[:6], 'and the Last Hash is:', last_hash[-6:])
         return True
     else:
         return False
